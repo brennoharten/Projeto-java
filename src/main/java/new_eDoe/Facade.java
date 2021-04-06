@@ -1,10 +1,10 @@
 package new_eDoe;
 
-import java.io.IOException;
-
 import new_eDoe.controllers.CrudUsuario;
 import new_eDoe.controllers.GestorItem;
 import new_eDoe.utils.Ferramentas;
+
+import java.io.IOException;
 
 /**
  *
@@ -74,8 +74,8 @@ public class Facade {
      * @param celular Celular do doador
      * @return String do usuário com as informações atualizadas
      */
-    public static String atualizaUsuario(String id, String nome, String email, String celular) {
-        return cd.atualizaUsuario(id, nome, email, celular);
+    public static String atualizaUsuario(String id, String nome, String email, String celular, String status) {
+        return cd.atualizaUsuario(id, nome, email, celular, status);
     }
 
     /**
@@ -266,49 +266,83 @@ public class Facade {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main
 
     public static void main(String[] args) throws IOException {
-
+        //lendo receptores
         lerReceptores("arquivos_sistema/novosReceptores.csv");
-        System.out.println(pesquisaUsuarioPorId("84473712044"));
+//        System.out.println(pesquisaUsuarioPorId(""));
 
-        adicionaUsuario("123", "brenno", "brennoharte@asg", "12414", "PESSOA_FISICA", "receptor");
+        //adicionando usuarios
+        adicionaUsuario("123", "brenno", "brennoharte@asg", "12414", "PESSOA_FISICA", "doador");
         System.out.println(pesquisaUsuarioPorId("123"));
-        System.out.println(pesquisaUsuarioPorNome("brenno"));
-
-//		atualizaUsuario()
 //
-//		removeUsuario()
 //
-//		adicionaDescritor()
+//        //atualizando email e telefone
+//		atualizaUsuario("123", "brenno", "brennoharten@gmail.com", "8599999-9999", "doador");
+//        System.out.println(pesquisaUsuarioPorNome("brenno"));
 //
-//		adicionaItemParaDoacao()
+//        System.out.println(pesquisaUsuarioPorId("88770280096"));
+//        //removendo um usuario
+//		removeUsuario("84473712044");
+////        System.out.println(pesquisaUsuarioPorId("84473712044"));
 //
-//		exibeItem()
+//        //adicionando descritores
+//		adicionaDescritor("Cobertor");
+//        adicionaDescritor("Roupas");
+//        adicionaDescritor("Alimentos");
+//        adicionaDescritor("Colchões");
 //
-//		atualizaItemParaDoacao()
+//        //listando todos os descritores
+//        System.out.println(listaDescritorDeItensParaDoacao());
 //
-//		removeItemParaDoacao()
+//        //adicionando itens para doação
+//		adicionaItemParaDoacao("123", "Cobertor", 20);
+//        adicionaItemParaDoacao("123", "alimentos", 40);
+//        System.out.println(adicionaItemParaDoacao("123", "Agua", 20));
 //
-//		listaDescritorDeItensParaDoacao()
+//        //listando todos os descritores
+//        System.out.println(listaDescritorDeItensParaDoacao());
 //
-//		listaItensParaDoacao()
+//        //exibindo o segundo item adicionado
+//        System.out.println(exibeItem(10000003, "123"));
 //
-//		pesquisaItemParaDoacaoPorDescricao()
+//        //atualizando a quantidade de um item para doação
+//        System.out.println(atualizaItemParaDoacao(10000003, "123", 30));
 //
-//		adicionaItemNecessario()
 //
-//		atualizaItemNecessario()
+//        //removendo um item que estava para doação
+//    	removeItemParaDoacao(10000003, "123");
+//        //System.out.println(exibeItem(10000002, "123"));
 //
-//		listaItensNecessarios()
+//        //listando apenas o itens que estao para doação
+//        System.out.println(listaItensParaDoacao());
 //
-//		removeItemNecessario()
+//        //pesquisa se existe um item para doacao
+//        System.out.println(pesquisaItemParaDoacaoPorDescricao("Cobertor"));
 //
-//		match()
+//        //adiciona um item necessario
+//        System.out.println(adicionaItemNecessario("88770280096", "alimentos", 20));
+//        adicionaItemNecessario("88770280096", "brinquedos", 20);
 //
-//		realizaDoacao()
+//        //atualiza a quantidade de um item necessario
+//        atualizaItemNecessario("88770280096", 10000004, 30);
 //
-//		listaDoacoes()
-
-        System.out.println(cd.getUsuarioValido("123", "receptor").getStatus());
+//        //lista todos os itens necessarios
+//        System.out.println(listaItensNecessarios());
+//
+//        //remove um item necessario
+//		removeItemNecessario("88770280096", 10000005);
+//
+//        //encontra um idem para doação que bata com a descrição
+//        System.out.println(match("88770280096", 10000004));
+//
+//        //realiza a doação e atualiza os valores
+//        realizaDoacao(10000004, 10000002, "06/04");
+//
+//        //lista as doações realizadas por ordem de data
+//        System.out.println(listaDoacoes());
+//
+//
+//        //listando apenas o itens que estao para doação
+//        System.out.println(listaItensParaDoacao());
     }
 
 }

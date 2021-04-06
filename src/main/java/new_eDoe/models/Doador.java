@@ -7,10 +7,6 @@ package new_eDoe.models;
  */
 public class Doador extends Usuario {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     private String status;
 
     /**

@@ -2,15 +2,6 @@ package new_eDoe.controllers;
 
 
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 import new_eDoe.comparators.DoacaoComparator;
 import new_eDoe.models.Doador;
 import new_eDoe.models.Item;
@@ -18,6 +9,11 @@ import new_eDoe.models.Receptor;
 import new_eDoe.models.Usuario;
 import new_eDoe.utils.Ferramentas;
 import new_eDoe.utils.Validador;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * Classe responsável por controlar o sistema eDoe
@@ -132,8 +128,8 @@ public class CrudUsuario implements Serializable {
      * @param celular   Celular do doador
      * @return String do usuário com as informações atualizadas
      */
-    public String atualizaUsuario(String idUsuario, String nome, String email, String celular) {
-        Usuario u = getUsuarioValido(idUsuario, "doador");
+    public String atualizaUsuario(String idUsuario, String nome, String email, String celular, String status) {
+        Usuario u = getUsuarioValido(idUsuario, status);
         if (nome != null && !nome.trim().equals("")) {
             u.setNome(nome);
         }
@@ -264,7 +260,7 @@ public class CrudUsuario implements Serializable {
      * @return int com o código de identificação (ID) do item necessário
      */
     public int adicionaItemNecessario(String idReceptor, String descricao, int quantidade, int idItem) {
-        Usuario u = getUsuarioValido(idReceptor, "Receptor");
+        Usuario u = getUsuarioValido(idReceptor, "receptor");
         return this.g.adicionaItemNecessario(u, descricao, quantidade, idItem);
     }
 
@@ -278,7 +274,7 @@ public class CrudUsuario implements Serializable {
      * @return String do item com as informações atualizadas
      */
     public String atualizaItemNecessario(String idReceptor, int idItem, int novaQuantidade) {
-        Usuario u = getUsuarioValido(idReceptor, "Receptor");
+        Usuario u = getUsuarioValido(idReceptor, "receptor");
         return this.g.atualizaNecessario(u, idItem, novaQuantidade);
     }
 
@@ -300,7 +296,7 @@ public class CrudUsuario implements Serializable {
      * @param idReceptor Documento de identificação do receptor
      */
     public void removeItemNecessario(String idReceptor, int idItem) {
-        Usuario u = getUsuarioValido(idReceptor, "Receptor");
+        Usuario u = getUsuarioValido(idReceptor, "receptor");
         this.g.removeItemNecessario(u, idItem);
     }
 
@@ -316,7 +312,7 @@ public class CrudUsuario implements Serializable {
      *         de identificação (ID) dos itens
      */
     public String match(String idReceptor, int idItemNecessario) {
-        Usuario u = getUsuarioValido(idReceptor, "Receptor");
+        Usuario u = getUsuarioValido(idReceptor, "receptor");
         return this.g.match(u, idItemNecessario, this.usuarios);
     }
 
