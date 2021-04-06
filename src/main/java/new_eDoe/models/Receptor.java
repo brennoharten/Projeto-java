@@ -7,10 +7,6 @@ package new_eDoe.models;
  */
 public class Receptor extends Usuario {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     protected String status;
 
     /**

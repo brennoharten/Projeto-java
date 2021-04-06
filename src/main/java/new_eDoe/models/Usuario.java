@@ -13,10 +13,6 @@ import java.util.Map;
  */
 public abstract class Usuario implements Usuario_eDoe, Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Usuario ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
